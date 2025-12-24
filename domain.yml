@@ -1,0 +1,35 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - ask_definition
+  - ask_template
+  - uncertain
+
+entities:
+  - topic
+
+slots:
+  topic:
+    type: text
+
+responses:
+  utter_greet:
+    - text: "Hello — I'm LegiAssist. How can I help you?"
+  utter_goodbye:
+    - text: "Goodbye! Stay informed and safe."
+  utter_ask_clarification:
+    - text: "Sorry, I didn't understand. Could you please clarify?"
+  utter_provide_definition:
+    - text: "Here’s the definition you asked for."
+  utter_provide_template:
+    - text: "Here is a sample document template."
+  utter_default_fallback:
+    - text: "I'm sorry, I didn't quite get that. Could you please rephrase?"
+
+actions:
+  - action_provide_definition
+  - action_provide_template
+  - utter_default_fallback
+

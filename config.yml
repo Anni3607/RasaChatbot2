@@ -1,0 +1,26 @@
+# config.yml (for Rasa 1.8 or older)
+language: en
+
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    epochs: 100
+  - name: EntitySynonymMapper
+
+policies:
+  - name: MemoizationPolicy
+  - name: KerasPolicy
+    epochs: 100
+  - name: FallbackPolicy
+    nlu_threshold: 0.3
+    core_threshold: 0.3
+    fallback_action_name: "utter_default_fallback"
+
+
